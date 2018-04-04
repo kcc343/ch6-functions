@@ -32,12 +32,11 @@ test2 <- is_twice_as_long(first_test, second_test)
 #   "Your strings are the same length!"
 
 describe_difference <- function(first_string, second_string) {
-  if (nchar(first_string) > nchar(second_string)) {
-    difference = nchar(first_string) - nchar(second_string)
+  difference = nchar(first_string) - nchar(second_string)
+  if (difference > 0) {
     status = paste("Your first string is longer by", difference, "characters")
-  } else if (nchar(first_string) < nchar(second_string)) {
-    difference = nchar(second_string) - nchar(first_string)
-    status = paste("Your second string is longer by", difference, "characters")
+  } else if (difference < 0) {
+    status = paste("Your second string is longer by", -difference, "characters")
   } else {
     status = "Your strings are the same length!"
   }
@@ -48,10 +47,6 @@ describe_difference <- function(first_string, second_string) {
 # Call your `describe_difference` function by passing it different length strings
 # to confirm that it works. Make sure to check all 3 conditions1
 
-name <- "Kelly"
-object <- "Spagh"
-test3 <- describe_difference(name, object)
-
-object2 <- "Spaghetti"
-test4 <- describe_difference(object2, name)
-test5 <- describe_difference(name, object2)
+test3 <- describe_difference("Kelly", "Spagh")
+test4 <- describe_difference("Spaghetti", "Kelly")
+test5 <- describe_difference("Kelly", "Spaghetti")
